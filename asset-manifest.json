@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/bon-viveur-travel/static/css/main.19f152bb.chunk.css",
+    "main.js": "/bon-viveur-travel/static/js/main.574c4633.chunk.js",
+    "main.js.map": "/bon-viveur-travel/static/js/main.574c4633.chunk.js.map",
+    "runtime-main.js": "/bon-viveur-travel/static/js/runtime-main.ec6319ea.js",
+    "runtime-main.js.map": "/bon-viveur-travel/static/js/runtime-main.ec6319ea.js.map",
+    "static/js/2.5de5f3ed.chunk.js": "/bon-viveur-travel/static/js/2.5de5f3ed.chunk.js",
+    "static/js/2.5de5f3ed.chunk.js.map": "/bon-viveur-travel/static/js/2.5de5f3ed.chunk.js.map",
+    "static/js/3.09753e11.chunk.js": "/bon-viveur-travel/static/js/3.09753e11.chunk.js",
+    "static/js/3.09753e11.chunk.js.map": "/bon-viveur-travel/static/js/3.09753e11.chunk.js.map",
+    "index.html": "/bon-viveur-travel/index.html",
+    "static/css/main.19f152bb.chunk.css.map": "/bon-viveur-travel/static/css/main.19f152bb.chunk.css.map",
+    "static/js/2.5de5f3ed.chunk.js.LICENSE.txt": "/bon-viveur-travel/static/js/2.5de5f3ed.chunk.js.LICENSE.txt",
+    "static/media/style.scss": "/bon-viveur-travel/static/media/MaisonNeue-Book.941caedd.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ec6319ea.js",
+    "static/js/2.5de5f3ed.chunk.js",
+    "static/css/main.19f152bb.chunk.css",
+    "static/js/main.574c4633.chunk.js"
+  ]
+}
