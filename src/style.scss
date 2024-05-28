@@ -1,21 +1,25 @@
 @font-face {
-  	font-family: Maison Neue;
-  	src: url('MaisonNeue-Book.ttf'); /* IE9 Compat Modes */
+	font-family: Maison Neue;
+	src: url('./assets/fonts/MaisonNeue-Book.ttf');
+	/* IE9 Compat Modes */
 }
 
 @font-face {
-  	font-family: Ivy Mode Regular;
-  	src: url('IvyMode-Regular.ttf'); /* IE9 Compat Modes */
+	font-family: Ivy Mode Regular;
+	src: url('./assets/fonts/IvyMode-Regular.ttf');
+	/* IE9 Compat Modes */
 }
 
 @font-face {
-  	font-family: Ivy Mode Light Italic;
-  	src: url('IvyMode-LightItalic.ttf'); /* IE9 Compat Modes */
+	font-family: Ivy Mode Light Italic;
+	src: url('./assets/fonts/IvyMode-LightItalic.ttf');
+	/* IE9 Compat Modes */
 }
 
 @font-face {
-  	font-family: Eksell Display;
-  	src: url('Eksell-Display-Small.otf'); /* IE9 Compat Modes */
+	font-family: Eksell Display;
+	src: url('./assets/fonts/Eksell-Display-Small.otf');
+	/* IE9 Compat Modes */
 }
 
 $bg-color: #f1e5d5;
@@ -26,7 +30,7 @@ $bg-color: #f1e5d5;
 }
 
 html {
-	background-color: $bg-color;
+	background-color: white;
 }
 
 h1 {
@@ -46,6 +50,10 @@ h2 {
 	text-transform: uppercase;
 }
 
+h3 {
+	margin: 0.2em 0;
+}
+
 form {
 	margin: 2em 0;
 }
@@ -61,20 +69,28 @@ select {
 }
 
 .App {
+	width: 100%;
+	height: 100vh;
 	//padding: 3em;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
 }
 
 .App-header {
 	text-align: center;
 	//padding: 1em 0;
-	padding: 4em 3em 1em 3em;
+	padding: 3em;
 	cursor: pointer;
+	color: black;
+	flex-shrink: 0;
+	display: none;
 }
 
 .nav {
 	position: fixed;
 	right: 3em;
-	top:3em;
+	top: 3em;
 	font-size: 12px;
 	width: 50px;
 	cursor: pointer;
@@ -122,14 +138,133 @@ select {
 	}
 }
 
-.eateries-wrapper {
-	display: flex;
-	flex-wrap: wrap;
+.city-wrapper {
 	width: 100%;
-	max-width: 1200px;
-	margin: 0 auto 20px;
-	padding: 0 2em;
+	height: 100%;
+	display: flex;
+	flex-shrink: 2;
+	position: relative;
+}
+
+.city-content-wrapper {
+	width: 70%;
+	height: 100%;
+	border-right: 1px solid black;
+	overflow-y: scroll;
+}
+
+.image-container {
+	border-top: 1px solid black;
+	width: 30%;
+	height: 100%;
+	padding: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	box-sizing: border-box;
+
+	img {
+		width: 100%;
+	}
+}
+
+.category-wrapper {
+	width: 100%;
+	//border-bottom: 1px solid black;
+
+	&:last-of-type {
+		border-bottom: 1px solid black;
+	}
+}
+
+.locations-wrapper {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+}
+
+.category-title {
+	width: 100%;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+	// display: flex;
+	// align-items: center;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+.scrolling-banner-wrapper {
+	width: 100%;
+	text-transform: uppercase;
+	/*padding: 10px 0;*/
+	overflow: hidden;
+	height: 35px;
+	box-sizing: border-box;
+}
+
+.scrolling-text-wrapper {
+	max-width: 100%;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	margin: 0 0 2em;
+	overflow: hidden;
+}
+
+.scrolling-banner-text {
+	white-space: nowrap;
+	overflow: hidden;
+	display: inline-block;
+	animation: scroll 30s linear infinite;
+	font-size: 14px;
+	padding: 10px 0;
+	height: 12px;
+	/*padding-top: 5px;*/
+}
+
+.scrolling-banner-text p {
+	display: inline-block;
+	line-height: 14px;
+	margin: 0;
+	font-size: 14px;
+	font-family: Ivy Mode Light Italic;
+	letter-spacing: 0.3em;
+}
+
+.location-wrapper {
+	// border-right: 1px solid black;
+	// border-top: 1px solid black;
+	// border-bottom: 1px solid black;
+	flex: 0 1 33.3333%;
+	width: 30%;
+	padding: 20px;
+	box-sizing: border-box;
+	cursor: pointer;
+
+	img {
+		max-width: 100%;
+	}
+
+	p {
+		font-size: 12px;
+	}
+
+	.location-title {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 20px;
+
+		p {
+			margin: 0
+		}
+	}
+
+	.location-pic-filler {
+		width: 100%;
+		border: 1px solid black;
+		background-color: black;
+		padding-bottom: 75%;
+	}
 }
 
 .dialog-wrapper {
@@ -139,7 +274,7 @@ select {
 	top: 0;
 	left: 0;
 	z-index: 40;
-	background-color: rgba(0,0,0,0.1);
+	background-color: rgba(0, 0, 0, 0.1);
 	overflow: visible;
 	display: flex;
 	align-items: center;
@@ -202,7 +337,9 @@ select {
 	.star-container {
 		display: flex;
 
-		p {margin: 3px;}
+		p {
+			margin: 3px;
+		}
 
 		.star-wrapper {
 			margin-right: 0.3em;
@@ -219,59 +356,23 @@ select {
 		font-size: 14px;
 		//margin: 0.7em 0;
 		border-bottom: 1px solid black;
-		padding: 1em 0; 
+		padding: 1em 0;
 
 		&:nth-of-type(1) {
 			border-top: 1px solid black;
 		}
 
-		p {margin: 3px 5px;}
-		img {width: 20px; height: 20px; margin-right: 5px;}
-	}
-	
-}
+		p {
+			margin: 3px 5px;
+		}
 
-.eatery {
-	width: 25%;
-	padding: 0 15px;
-	box-sizing: border-box;
-
-	h3 {
-		font-family: Eksell Display;
-		font-weight: 100;
-		letter-spacing: 1px;
-		font-size: 22px;
-		margin-bottom: 0.5em;
-		cursor: pointer;
-
-		&:hover {
-			text-decoration: underline;
+		img {
+			width: 20px;
+			height: 20px;
+			margin-right: 5px;
 		}
 	}
 
-	p {
-		font-size: 14px;
-	}
-
-	.eatery-cuisines {
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		color: #333;
-		font-size: 12px;
-	}
-}
-
-.gm-style-iw .eatery {
-	width: 100%;
-	max-width: 250px;
-
-	h3 {
-		font-size:18px;
-	}
-}
-
-.gm-style .gm-style-iw-c {
-	border-radius: 0;
 }
 
 .cuisines {
@@ -280,7 +381,7 @@ select {
 	margin: 3em auto 0;
 	text-align: left;
 	//box-sizing: border-box;
-	
+
 	.cuisine-title {
 		font-size: 18px;
 		padding: 10px;
@@ -305,12 +406,13 @@ select {
 		letter-spacing: 1px;
 	}
 
-	input[type="reset"], button {
+	input[type="reset"],
+	button {
 		height: 28px;
 		margin-left: 0.5em;
 		margin-top: 0.8em;
 		background: #f1e5d5;
-		border:1px solid black;
+		border: 1px solid black;
 		cursor: pointer;
 		color: black;
 		transition: 0.5s linear;
@@ -421,7 +523,7 @@ select {
 }
 
 .map-container {
-	width:100%;
+	width: 100%;
 	height: 700px;
 	display: flex;
 	align-items: center;
@@ -509,7 +611,8 @@ select {
 		padding: 5px;
 	}
 
-	input[type="submit"], input[type="reset"] {
+	input[type="submit"],
+	input[type="reset"] {
 		padding: 5px 10px;
 		margin: 0 3px;
 		border: 1px solid black;
@@ -530,7 +633,9 @@ select {
 		padding: 15px;
 		font-size: 12px;
 
-		p {margin: 0;}
+		p {
+			margin: 0;
+		}
 
 		&.warning {
 			border-color: yellow;
@@ -552,66 +657,50 @@ select {
 	}
 }
 
-@keyframes slide {
-	0% {transform: scaleX(0)}
-	100% {transform: scaleX(1)}
-}
-
-@media only screen and (max-width: 1010px) {
-	.eatery { 
-		width: 33%;
+@keyframes scroll {
+	0% {
+		transform: translateX(0);
 	}
-	.cuisines {
-  		width: 90%;
 
-  		form {
-  			label {
-  				width: 47%;
-  				max-width: 400px;
-  				margin: 1em 0.5em;
-  			}
-
-  			input[type="reset"], button {
-  				width: 96%;
-  				margin: 1em 0 0;
-  			}
-  		}
-  	}
+	100% {
+		transform: translateX(-50%);
+	}
 }
 
-@media only screen and (max-width: 800px) {
-  	.eatery {
-  		width: 50%;
-  		//margin: 0 auto;
-  	}	
+@keyframes slide {
+	0% {
+		transform: scaleX(0)
+	}
+
+	100% {
+		transform: scaleX(1)
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.city-content-wrapper {
+		width: 50%;
+	}
+
+	.image-container {
+		width: 50%;
+	}
+
+	.location-wrapper {
+		flex: 0 1 50%;
+		width: 50%;
+	}
 }
 
 @media only screen and (max-width: 600px) {
-  	.eatery {
-  		width: 70%;
-  		margin: 0 auto;
-  	}
+	.city-content-wrapper {
+		width: 100%;
+		position: absolute;
+		z-index: 2;
+	}
 
-  	.nav {
-  		width: 40px;
-  	}
-
-  	.cuisines {
-  		form {
-  			label {
-  				width: 100%;
-  				max-width: 400px;
-  				margin: 1em 0;
-  			}
-
-  			input[type="reset"], button {
-  				width: 100%;
-  				margin: 1em 0 0;
-  			}
-  		}
-  	}
-
-  	.dialog {
-  		width: 70%;
-  	}
+	.image-container {
+		width: 100%;
+		position: absolute;
+	}
 }

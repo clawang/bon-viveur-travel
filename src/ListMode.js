@@ -1,51 +1,79 @@
-import React, { useEffect, useState, useRef } from 'react';
-import {extractProp} from './parseData';
-import Loading from './Loading';
+import React, { useEffect, useState } from 'react';
 
 function ListMode(props) {
-
-	const [curRes, setCurRes] = useState([]);
-
-	useEffect(() => {
-		let temp = props.restaurants;
-		temp = temp.filter((r, i, arr) => arr.findIndex(f => f.name === r.name) === i);
-		setCurRes(temp);
-	}, [props.restaurants]);
+	const [image, setImage] = useState("");
 
 	return (
-		<div className="eateries-wrapper">
-			{props.loaded ? 
-				curRes.map((res, i) => <Eatery res={res} fetchData={props.fetchData} key={i} />)
-				:
-				<Loading />
-			}
+		<div className="city-wrapper">
+			<div className="city-content-wrapper">
+				{props.data.map((category, i) => <Category data={category} key={i} setImage={setImage} />)}
+			</div>
+			<div className="image-container">
+				{
+					image ?
+						<img src={process.env.PUBLIC_URL + image} />
+						:
+						<></>
+				}
+			</div>
 		</div>
 	);
 }
 
-function Eatery(props) {
+function Category(props) {
+	return (
+		<div className="category-wrapper">
+			<div className="category-title">
+				<ScrollingBanner title={props.data.name} />
+			</div>
+			<div className="locations-wrapper">
+				{props.data.items.map((item, i) => <Location data={item} key={i} setImage={props.setImage} />)}
+			</div>
+		</div>
+	);
+}
 
-	const strToPrice = () => {
+function ScrollingBanner(props) {
+	const buildString = () => {
 		let str = "";
-		for(let i = 0; i < props.res.price; i++) {
+		for (let i = 0; i < 20; i++) {
+			str += props.title + " ● ";
+		}
+		return str;
+	}
+	return (
+		<div className="scrolling-banner-wrapper">
+			<div className="scrolling-banner-text">
+				<p>{buildString()}</p>
+				<p>{buildString()}</p>
+			</div>
+		</div>
+	);
+}
+
+function Location(props) {
+
+	const numToPrice = () => {
+		let str = "";
+		for (let i = 0; i < props.data.price; i++) {
 			str += "$";
 		}
 		return str;
 	}
 
 	return (
-		<div className="eatery">
-			<h3 onClick={() => props.fetchData(props.res)}>{props.res.name}</h3>
-			<p className="eatery-cuisines">{props.res.cuisine.map((c, i) => {
-				if(i === 0) return c;
-				return ", " + c;
-			})} | {strToPrice()}</p>
-			<p>{props.res.location.map((c, i) => {
-				if(i === 0) return c;
-				return ", " + c;
-			})}</p>
+		<div className="location-wrapper" onMouseEnter={() => props.setImage(props.data.img)}>
+			<div className="location-title">
+				<h3>{props.data.name + (props.data.img ? "⟶" : "")}</h3>
+				{props.data.price ?
+					<p>{numToPrice()}</p>
+					:
+					<></>
+				}
+			</div>
+			<p>{props.data.description}</p>
 		</div>
 	);
 }
 
-export {Eatery, ListMode};
+export { ListMode };
